@@ -7,13 +7,14 @@ function newTeam(req, res) {
 }
 
 function create(req, res) {
+  req.body.owner = req.user.profile._id
   Team.create(req.body)
   .then(team => {
-    res.redirect('/teams/new')
+    res.redirect('/teams')
   })
   .catch(err => {
     console.error(err)
-    res.redirect('/teams/new')
+    res.redirect('/teams')
   })
 }
 
