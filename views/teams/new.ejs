@@ -1,0 +1,31 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/teams/new.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <form action="/teams" method="POST" id="new-form">
+
+    <label for="city-input">Team City:</label>
+    <input type="text" name="city" id="city-input">
+
+    <label for="name-input">Team Name (mascot):</label>
+    <input type="text" name="name" id="name-input">
+
+    <label for="conference-input">Conference:</label>
+    <select name="conference" id="conference-input">
+      <option value="West">West</option>
+      <option value="East">East</option>
+    </select>
+
+    <label for="pri-color-input">Primary Color:</label>
+    <input type="text" name="priColor" id="pri-color-input">
+
+    <label for="sec-color-input">Secondary Color:</label>
+    <input type="text" name="secColor" id="sec-color-input">
+
+    <button type="submit">Add Team</button>
+  </form>
+</main>
+
+<%- include("../partials/footer") %>
