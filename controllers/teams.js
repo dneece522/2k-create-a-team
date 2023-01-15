@@ -18,7 +18,24 @@ function create(req, res) {
   })
 }
 
+function index(req, res) {
+  Team.find({})
+  .populate('owner')
+  .then(teams => {
+    res.render('teams/index', {
+      title: 'All Teams',
+      teams,
+      user: req.user ? req.user : null
+    })
+  })
+  .catch(err => {
+    console.error(err)
+    res.redirect('/')
+  })
+}
+
 export {
   newTeam as new,
   create,
+  index,
 }

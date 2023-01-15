@@ -1,0 +1,34 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/teams/index.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1>Basketball Teams</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Team City</th>
+        <th>Team Name</th>
+        <th>Conference</th>
+        <th>Primary Color</th>
+        <th>Secondary Color</th>
+        <th>Owner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%# Oh hey, this is an ejs comment! It starts with a # %>
+      <% teams.forEach(team => { %>
+        <tr>
+          <td><%= team.city %></td>
+          <td><%= team.name %></td>
+          <td><%= team.conference %></td>
+          <td><%= team.priColor %></td>
+          <td><%= team.secColor %></td>
+          <td><%= team.owner.name %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>
