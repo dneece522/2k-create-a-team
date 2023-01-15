@@ -4,6 +4,7 @@
 </head>
 <body>
   <nav>
+    <i class="fas fa-film fa-2x"></i>
     <% if (user) { %>
       <a href="/auth/logout" class="right">
         <button type="submit">Logout</button>
@@ -25,4 +26,22 @@
         data-logo_alignment="left"
       ></div>
     <% } %>
+    <a 
+      href="/players/new" 
+      <%- title === "Add Player" ? 'class="active"' : "" %>
+    >
+      ADD PLAYER
+    </a>
+    <a 
+      href="/teams/new" 
+      <%- title === "Add Team" ? 'class="active"' : "" %>
+    >
+      ADD TEAM
+    </a>
+    <a 
+      href="/teams" 
+      <%- title === "All Teams" ? 'class="active"' : "" %>
+    >
+      ALL TEAMS
+    </a>
   </nav>
