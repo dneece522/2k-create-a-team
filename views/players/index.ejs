@@ -1,0 +1,87 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/players/index.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <% if (user) { %> 
+    <h1><%= title %></h1>
+    <form id="add-player-form" action="/players" method="POST">
+      <label for="name-input">Player Name:</label>
+      <input type="text" name="name" id="name-input">
+
+      <label for="position-input">Player Position:</label>
+      <select name="position" id="position-input">
+        <option value="Point Guard">Point Guard</option>
+        <option value="Shooting Guard">Shooting Guard</option>
+        <option value="Small Forward">Small Forward</option>
+        <option value="Power Forward">Power Forward</option>
+        <option value="Center">Center</option>
+      </select>
+
+      <label for="college-input">College:</label>
+      <input type="text" name="college" id="college-input">
+
+      <label for="off-rating">Offensive Rating (0-99):</label>
+      <input type="text" name="offRating" id="off-rating">
+
+      <label for="def-rating">Defensive Rating (0-99):</label>
+      <input type="text" name="defRating" id="def-rating">
+
+      <button type="submit">Add Player</button>
+    </form>
+    <section>
+      <h1>Existing Players</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>College</th>
+            <th>Offensive Rating</th>
+            <th>Defensive Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% players.forEach(player => { %>
+            <tr>
+              <td><%= player.name %></td>
+              <td><%= player.position %></td>
+              <td><%= player.college %></td>
+              <td><%= player.offRating %></td>
+              <td><%= player.defRating %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </section>
+  <% } else { %> 
+    <h1>You Must Sign-In to Add a Player!</h1>
+    <section>
+      <h1>Existing Players</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>College</th>
+            <th>Offensive Rating</th>
+            <th>Defensive Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% players.forEach(player => { %>
+            <tr>
+              <td><%= player.name %></td>
+              <td><%= player.position %></td>
+              <td><%= player.college %></td>
+              <td><%= player.offRating %></td>
+              <td><%= player.defRating %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </section>
+  <% } %> 
+</main>
+
+<%- include("../partials/footer") %>
