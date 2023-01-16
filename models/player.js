@@ -29,7 +29,7 @@ const playerSchema = new Schema({
   timestamps: true
 })
 
-const Player = mongoose.model('Team', playerSchema)
+const Player = mongoose.model('Player', playerSchema)
 
 export {
   Player
