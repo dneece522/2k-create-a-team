@@ -14,7 +14,7 @@ function create(req, res) {
   })
   .catch(err => {
     console.error(err)
-    res.redirect('/teams')
+    res.redirect('/teams/new')
   })
 }
 
@@ -34,8 +34,27 @@ function index(req, res) {
   })
 }
 
+function deleteTeam(req, res) {
+  Team.findById(req.params.id)
+  .then(team => {
+    if (team.owner.equals(req.user.profile._id)) {
+      team.delete()
+      .then(() => {
+        res.redirect('/teams')
+      })
+    } else {
+      throw new Error ('🚫 Not Authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.error(err)
+    res.redirect('/teams')
+  })
+}
+
 export {
   newTeam as new,
   create,
   index,
+  deleteTeam as delete,
 }

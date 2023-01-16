@@ -3,14 +3,26 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const teamSchema = new Schema({
-  city: String,
-  name: String,
+  city: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
   conference: {
     type: String,
     enum: ['West', 'East']
   },
-  priColor: String,
-  secColor: String,
+  priColor: {
+    type: String,
+    required: true
+  },
+  secColor: {
+    type: String,
+    required: true
+  },
   owner: {type: Schema.Types.ObjectId, ref: "Profile"}
 }, {
   timestamps: true

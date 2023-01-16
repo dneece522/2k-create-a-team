@@ -13,10 +13,10 @@
         <th>Primary Color</th>
         <th>Secondary Color</th>
         <th>Owner</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      <%# Oh hey, this is an ejs comment! It starts with a # %>
       <% teams.forEach(team => { %>
         <tr>
           <td><%= team.city %></td>
@@ -25,6 +25,16 @@
           <td><%= team.priColor %></td>
           <td><%= team.secColor %></td>
           <td><%= team.owner.name %></td>
+          <td>
+            <% if (team.owner.equals(user?.profile._id)) { %> 
+            <form
+              action="/teams/<%= team._id %>?_method=DELETE"
+              method="POST"
+            >
+              <button>X</button>
+            </form>
+            <% } %> 
+          </td>
         </tr>
       <% }) %>
     </tbody>

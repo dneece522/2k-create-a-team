@@ -13,6 +13,9 @@ router.get('/', teamsCtrl.index)
 // POST localhost:3000/teams
 router.post('/', isLoggedIn, teamsCtrl.create)
 
+// DELETE localhost:3000/teams/:id
+router.delete('/:id', isLoggedIn, teamsCtrl.delete)
+
 export {
   router
 }
