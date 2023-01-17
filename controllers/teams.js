@@ -59,7 +59,6 @@ function show(req, res) {
   .then(team => {
     Player.find({_id: {$nin: team.roster}})
     .then(players => {
-      console.log('ROSTER:', team.roster)
       res.render('teams/show', {
         title: 'Team Details',
         team,
@@ -101,6 +100,20 @@ function addToRoster(req, res) {
   })
 }
 
+function edit(req, res) {
+  Team.findById(req.params.id)
+  .then(team => {
+    res.render('teams/edit', {
+      title: 'Edit Team',
+      team
+    })
+  })
+  .catch(err => {
+    console.error(err)
+    res.redirect('/teams')
+  })
+}
+
 export {
   newTeam as new,
   create,
@@ -108,4 +121,5 @@ export {
   deleteTeam as delete,
   show,
   addToRoster,
+  edit,
 }

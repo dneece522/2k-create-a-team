@@ -1,0 +1,35 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/teams/edit.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <% if (user) { %> 
+    <h1><%= title %></h1>
+    <form action="/teams/<%= team._id %>?_method=PUT" method="POST">
+
+      <label>Team City:</label>
+      <input type="text" name="city" value="<%= team.city %>">
+
+      <label>Team Name (mascot):</label>
+      <input type="text" name="name" value="<%= team.name %>">
+
+      <label>Conference:</label>
+      <select name="conference" value="<%= team.conference %>">
+        <option value="West">West</option>
+        <option value="East">East</option>
+      </select>
+
+      <label>Primary Color:</label>
+      <input type="text" name="priColor" value="<%= team.priColor %>">
+
+      <label>Secondary Color:</label>
+      <input type="text" name="secColor" value="<%= team.secColor %>">
+
+      <button type="submit">Update Team</button>
+    </form>
+  <% } else { %> 
+    <h1>You Must Sign-In to Edit a Team!</h1>
+  <% } %> 
+</main>
+
+<%- include("../partials/footer") %></input>

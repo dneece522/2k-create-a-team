@@ -13,7 +13,7 @@
         <th>Primary Color</th>
         <th>Secondary Color</th>
         <th>Owner</th>
-        <% if (team.owner.equals(user?.profile._id)) { %>
+        <% if (team.owner.equals(user?.profile._id) && team.roster.length) { %>
           <th>Owner Options</th>
         <% } %>
       </tr>
@@ -26,7 +26,7 @@
         <td><%= team.priColor %></td>
         <td><%= team.secColor %></td>
         <td><%= team.owner.name %></td>
-        <% if (team.owner.equals(user?.profile._id)) { %>
+        <% if (team.owner.equals(user?.profile._id) && team.roster.length) { %>
           <td>
             <a href="/teams/<%= team._id %>/edit">EDIT TEAM</a>
           </td>
@@ -61,13 +61,13 @@
         <% }) %>
       </tbody>
     </table>
-  <% } else if (team.roster.length === 0 && user) { %>
+  <% } else if (!team.roster.length && team.owner.equals(user?.profile._id)){ %>
     <h1>Add Your Roster</h1>
     <form id="add-to-roster" action="/teams/<%= team._id %>/players" method="POST">
 
       <label for="pg-input">Point Guard:</label>
       <select name="pgId" id="pg-input">
-        <!-- <option value="" disabled selected hidden>Choose Point Guard</option> -->
+        <option value="" disabled selected hidden>Choose Point Guard</option>
         <% players.forEach(player => { %> 
           <% if (player.position === 'Point Guard') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -77,7 +77,7 @@
 
       <label for="sg-input">Shooting Guard:</label>
       <select name="sgId" id="sg-input">
-        <!-- <option value="" disabled selected hidden>Choose Shooting Guard</option> -->
+        <option value="" disabled selected hidden>Choose Shooting Guard</option>
         <% players.forEach(player => { %> 
           <% if (player.position === 'Shooting Guard') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -87,7 +87,7 @@
 
       <label for="sf-input">Small Forward:</label>
       <select name="sfId" id="sf-input">
-        <!-- <option value="" disabled selected hidden>Choose Small Forward</option> -->
+        <option value="" disabled selected hidden>Choose Small Forward</option>
         <% players.forEach(player => { %> 
           <% if (player.position === 'Small Forward') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -97,7 +97,7 @@
 
       <label for="pf-input">Power Forward:</label>
       <select name="pfId" id="pf-input">
-        <!-- <option value="" disabled selected hidden>Choose Power Forward</option> -->
+        <option value="" disabled selected hidden>Choose Power Forward</option>
         <% players.forEach(player => { %> 
           <% if (player.position === 'Power Forward') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -107,7 +107,7 @@
 
       <label for="c-input">Center:</label>
       <select name="cId" id="c-input">
-        <!-- <option value="" disabled selected hidden>Choose Center</option> -->
+        <option value="" disabled selected hidden>Choose Center</option>
         <% players.forEach(player => { %> 
           <% if (player.position === 'Center') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -117,7 +117,9 @@
 
       <button type="submit">Submit Roster</button>
     </form>
-  <% } %>
+  <% } else { %>
+    <h1><%= team.owner.name %> Has Not Submitted A Roster Yet</h1>
+  <% } %> 
 </main>
 
 <%- include('../partials/footer') %>
