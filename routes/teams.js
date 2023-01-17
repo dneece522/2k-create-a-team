@@ -10,6 +10,9 @@ router.get('/new', teamsCtrl.new)
 // GET localhost:3000/teams
 router.get('/', teamsCtrl.index)
 
+// GET localhost:3000/teams/:id
+router.get('/:id', teamsCtrl.show)
+
 // POST localhost:3000/teams
 router.post('/', isLoggedIn, teamsCtrl.create)
 

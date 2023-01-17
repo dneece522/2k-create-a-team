@@ -1,0 +1,92 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/teams/show.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Team City</th>
+        <th>Team Name</th>
+        <th>Conference</th>
+        <th>Primary Color</th>
+        <th>Secondary Color</th>
+        <th>Owner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= team.city %></td>
+        <td><%= team.name %></td>
+        <td><%= team.conference %></td>
+        <td><%= team.priColor %></td>
+        <td><%= team.secColor %></td>
+        <td><%= team.owner.name %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <% if (team.roster.length) { %>
+    <h1>Team Roster</h1>
+
+  <% } else { %>
+    <h1>Add Your Roster</h1>
+    <form id="add-to-roster" action="" method="POST">
+
+      <label for="pg-input">Point Guard:</label>
+      <select name="pgId" id="pg-input">
+        <option value="" disabled selected hidden>Choose Point Guard</option>
+        <% players.forEach(player => { %> 
+          <% if (player.position === 'Point Guard') { %>
+            <option value="<%= player._id %>"><%= player.name %></option>
+          <% } %>
+        <% }) %> 
+      </select>
+
+      <label for="sg-input">Shooting Guard:</label>
+      <select name="sgId" id="sg-input">
+        <option value="" disabled selected hidden>Choose Shooting Guard</option>
+        <% players.forEach(player => { %> 
+          <% if (player.position === 'Shooting Guard') { %>
+            <option value="<%= player._id %>"><%= player.name %></option>
+          <% } %>
+        <% }) %> 
+      </select>
+
+      <label for="sf-input">Small Forward:</label>
+      <select name="sfId" id="sf-input">
+        <option value="" disabled selected hidden>Choose Small Forward</option>
+        <% players.forEach(player => { %> 
+          <% if (player.position === 'Small Forward') { %>
+            <option value="<%= player._id %>"><%= player.name %></option>
+          <% } %>
+        <% }) %> 
+      </select>
+
+      <label for="pf-input">Power Forward:</label>
+      <select name="pfId" id="pf-input">
+        <option value="" disabled selected hidden>Choose Power Forward</option>
+        <% players.forEach(player => { %> 
+          <% if (player.position === 'Power Forward') { %>
+            <option value="<%= player._id %>"><%= player.name %></option>
+          <% } %>
+        <% }) %> 
+      </select>
+
+      <label for="c-input">Center:</label>
+      <select name="cId" id="c-input">
+        <option value="" disabled selected hidden>Choose Center</option>
+        <% players.forEach(player => { %> 
+          <% if (player.position === 'Center') { %>
+            <option value="<%= player._id %>"><%= player.name %></option>
+          <% } %>
+        <% }) %> 
+      </select>
+
+      <button type="submit">Submit Roster</button>
+    </form>
+  <% } %>
+</main>
+
+<%- include('../partials/footer') %>

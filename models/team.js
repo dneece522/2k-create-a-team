@@ -23,6 +23,7 @@ const teamSchema = new Schema({
     type: String,
     required: true
   },
+  roster: [{type: Schema.Types.ObjectId, ref: 'Player'}],
   owner: {type: Schema.Types.ObjectId, ref: "Profile"}
 }, {
   timestamps: true

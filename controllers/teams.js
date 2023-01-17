@@ -1,3 +1,4 @@
+import { Player } from '../models/player.js'
 import { Team } from '../models/team.js'
 
 function newTeam(req, res) {
@@ -10,7 +11,7 @@ function create(req, res) {
   req.body.owner = req.user.profile._id
   Team.create(req.body)
   .then(team => {
-    res.redirect('/teams')
+    res.redirect(`/teams/${team._id}`)
   })
   .catch(err => {
     console.error(err)
@@ -52,9 +53,33 @@ function deleteTeam(req, res) {
   })
 }
 
+function show(req, res) {
+  Team.findById(req.params.id)
+  .populate('owner roster')
+  .then(team => {
+    Player.find({_id: {$nin: team.roster}})
+    .then(players => {
+      res.render('teams/show', {
+        title: 'Team Details',
+        team,
+        players
+      })
+    })
+    .catch(err => {
+      console.error(err)
+      res.redirect('/teams')
+    })
+  })
+  .catch(err => {
+    console.error(err)
+    res.redirect('/teams')
+  })
+}
+
 export {
   newTeam as new,
   create,
   index,
   deleteTeam as delete,
+  show
 }

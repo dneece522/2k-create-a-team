@@ -12,6 +12,7 @@
         <th>Conference</th>
         <th>Primary Color</th>
         <th>Secondary Color</th>
+        <th>Roster</th>
         <th>Owner</th>
         <th></th>
       </tr>
@@ -24,6 +25,7 @@
           <td><%= team.conference %></td>
           <td><%= team.priColor %></td>
           <td><%= team.secColor %></td>
+          <td><a href="/teams/<%= team._id %>">ROSTER</a></td>
           <td><%= team.owner.name %></td>
           <td>
             <% if (team.owner.equals(user?.profile._id)) { %> 
