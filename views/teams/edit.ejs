@@ -25,6 +25,56 @@
       <label>Secondary Color:</label>
       <input type="text" name="secColor" value="<%= team.secColor %>">
 
+      <label>Point Guard:</label>
+      <select name="pgId">
+        <option value="" disabled selected hidden>Choose Point Guard</option>
+        <% players.forEach(player => { %> 
+          <% if (player.position === 'Point Guard') { %>
+            <option value="<%= player._id %>"><%= player.name %></option>
+          <% } %>
+        <% }) %> 
+      </select>
+
+      <label>Shooting Guard:</label>
+      <select name="sgId">
+        <option value="" disabled selected hidden>Choose Shooting Guard</option>
+        <% players.forEach(player => { %> 
+          <% if (player.position === 'Shooting Guard') { %>
+            <option value="<%= player._id %>"><%= player.name %></option>
+          <% } %>
+        <% }) %> 
+      </select>
+
+      <label>Small Forward:</label>
+      <select name="sfId">
+        <option value="" disabled selected hidden>Choose Small Forward</option>
+        <% players.forEach(player => { %> 
+          <% if (player.position === 'Small Forward') { %>
+            <option value="<%= player._id %>"><%= player.name %></option>
+          <% } %>
+        <% }) %> 
+      </select>
+
+      <label>Power Forward:</label>
+      <select name="pfId">
+        <option value="" disabled selected hidden>Choose Power Forward</option>
+        <% players.forEach(player => { %> 
+          <% if (player.position === 'Power Forward') { %>
+            <option value="<%= player._id %>"><%= player.name %></option>
+          <% } %>
+        <% }) %> 
+      </select>
+
+      <label>Center:</label>
+      <select name="cId">
+        <option value="" disabled selected hidden>Choose Center</option>
+        <% players.forEach(player => { %> 
+          <% if (player.position === 'Center') { %>
+            <option value="<%= player._id %>"><%= player.name %></option>
+          <% } %>
+        <% }) %> 
+      </select>
+
       <button type="submit">Update Team</button>
     </form>
   <% } else { %> 

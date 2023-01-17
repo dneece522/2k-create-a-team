@@ -69,7 +69,6 @@ function show(req, res) {
       console.error(err)
       res.redirect('/teams')
     })
-
   })
   .catch(err => {
     console.error(err)
@@ -103,9 +102,17 @@ function addToRoster(req, res) {
 function edit(req, res) {
   Team.findById(req.params.id)
   .then(team => {
-    res.render('teams/edit', {
-      title: 'Edit Team',
-      team
+    Player.find({})
+    .then(players => {
+      res.render('teams/edit', {
+        title: 'Edit Team & Roster',
+        team,
+        players
+      })
+    })
+    .catch(err => {
+      console.error(err)
+      res.redirect('/teams')
     })
   })
   .catch(err => {
@@ -116,10 +123,18 @@ function edit(req, res) {
 
 function update(req, res) {
   Team.findById(req.params.id)
+  .populate('roster')
   .then(team => {
     if (team.owner.equals(req.user.profile._id)) {
       team.updateOne(req.body)
       .then(() => {
+        team.roster = []
+        team.roster.push(req.body.pgId) //point guard
+        team.roster.push(req.body.sgId) //shooting guard
+        team.roster.push(req.body.sfId) //small forward
+        team.roster.push(req.body.pfId) //power forward
+        team.roster.push(req.body.cId)  //center
+        team.save()
         res.redirect(`/teams/${team._id}`)
       })
       .catch(err => {
