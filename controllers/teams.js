@@ -59,11 +59,36 @@ function show(req, res) {
   .then(team => {
     Player.find({_id: {$nin: team.roster}})
     .then(players => {
+      console.log('ROSTER:', team.roster)
       res.render('teams/show', {
         title: 'Team Details',
         team,
         players
       })
+    })
+    .catch(err => {
+      console.error(err)
+      res.redirect('/teams')
+    })
+
+  })
+  .catch(err => {
+    console.error(err)
+    res.redirect('/teams')
+  })
+}
+
+function addToRoster(req, res) {
+  Team.findById(req.params.id)
+  .then(team => {
+    team.roster.push(req.body.pgId) //point guard
+    team.roster.push(req.body.sgId) //shooting guard
+    team.roster.push(req.body.sfId) //small forward
+    team.roster.push(req.body.pfId) //power forward
+    team.roster.push(req.body.cId)  //center
+    team.save()
+    .then(() => {
+      res.redirect(`/teams/${team._id}`)
     })
     .catch(err => {
       console.error(err)
@@ -81,5 +106,6 @@ export {
   create,
   index,
   deleteTeam as delete,
-  show
+  show,
+  addToRoster,
 }

@@ -29,14 +29,37 @@
 
   <% if (team.roster.length) { %>
     <h1>Team Roster</h1>
-
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Position</th>
+          <th>Name</th>
+          <th>College</th>
+          <th>Offensive Rating</th>
+          <th>Defensive Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% team.roster.forEach((player, idx) => { %>
+          <tr>
+            <td><%= idx + 1 %>.</td>
+            <td><%= player.position %>:</td>
+            <td><%= player.name %></td>
+            <td><%= player.college %></td>
+            <td><%= player.offRating %></td>
+            <td><%= player.defRating %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
   <% } else { %>
     <h1>Add Your Roster</h1>
-    <form id="add-to-roster" action="" method="POST">
+    <form id="add-to-roster" action="/teams/<%= team._id %>/players" method="POST">
 
       <label for="pg-input">Point Guard:</label>
       <select name="pgId" id="pg-input">
-        <option value="" disabled selected hidden>Choose Point Guard</option>
+        <!-- <option value="" disabled selected hidden>Choose Point Guard</option> -->
         <% players.forEach(player => { %> 
           <% if (player.position === 'Point Guard') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -46,7 +69,7 @@
 
       <label for="sg-input">Shooting Guard:</label>
       <select name="sgId" id="sg-input">
-        <option value="" disabled selected hidden>Choose Shooting Guard</option>
+        <!-- <option value="" disabled selected hidden>Choose Shooting Guard</option> -->
         <% players.forEach(player => { %> 
           <% if (player.position === 'Shooting Guard') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -56,7 +79,7 @@
 
       <label for="sf-input">Small Forward:</label>
       <select name="sfId" id="sf-input">
-        <option value="" disabled selected hidden>Choose Small Forward</option>
+        <!-- <option value="" disabled selected hidden>Choose Small Forward</option> -->
         <% players.forEach(player => { %> 
           <% if (player.position === 'Small Forward') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -66,7 +89,7 @@
 
       <label for="pf-input">Power Forward:</label>
       <select name="pfId" id="pf-input">
-        <option value="" disabled selected hidden>Choose Power Forward</option>
+        <!-- <option value="" disabled selected hidden>Choose Power Forward</option> -->
         <% players.forEach(player => { %> 
           <% if (player.position === 'Power Forward') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -76,7 +99,7 @@
 
       <label for="c-input">Center:</label>
       <select name="cId" id="c-input">
-        <option value="" disabled selected hidden>Choose Center</option>
+        <!-- <option value="" disabled selected hidden>Choose Center</option> -->
         <% players.forEach(player => { %> 
           <% if (player.position === 'Center') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
