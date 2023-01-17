@@ -114,6 +114,28 @@ function edit(req, res) {
   })
 }
 
+function update(req, res) {
+  Team.findById(req.params.id)
+  .then(team => {
+    if (team.owner.equals(req.user.profile._id)) {
+      team.updateOne(req.body)
+      .then(() => {
+        res.redirect(`/teams/${team._id}`)
+      })
+      .catch(err => {
+        console.error(err)
+        res.redirect('/teams')
+      })
+    } else {
+      throw new Error('🚫 Not Authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.error(err)
+    res.redirect('/teams')
+  })
+}
+
 export {
   newTeam as new,
   create,
@@ -122,4 +144,5 @@ export {
   show,
   addToRoster,
   edit,
+  update
 }
