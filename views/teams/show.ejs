@@ -13,6 +13,9 @@
         <th>Primary Color</th>
         <th>Secondary Color</th>
         <th>Owner</th>
+        <% if (team.owner.equals(user?.profile._id)) { %>
+          <th>Owner Options</th>
+        <% } %>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +26,11 @@
         <td><%= team.priColor %></td>
         <td><%= team.secColor %></td>
         <td><%= team.owner.name %></td>
+        <% if (team.owner.equals(user?.profile._id)) { %>
+          <td>
+            <a href="/teams/<%= team._id %>/edit">EDIT TEAM</a>
+          </td>
+        <% } %>
       </tr>
     </tbody>
   </table>
@@ -53,7 +61,7 @@
         <% }) %>
       </tbody>
     </table>
-  <% } else { %>
+  <% } else if (team.roster.length === 0 && user) { %>
     <h1>Add Your Roster</h1>
     <form id="add-to-roster" action="/teams/<%= team._id %>/players" method="POST">
 
