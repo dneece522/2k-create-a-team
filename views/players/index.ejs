@@ -24,14 +24,32 @@
       <label for="off-rating">Offensive Rating (0-99):</label>
       <div class="slidecontainer">
         <input type="range" name="offRating" min="1" max="99" value="50" class="slider" id="off-rating">
+        <div id="off-value"></div>
+        <script type="text/javascript">
+          let slider = document.getElementById("off-rating")
+          let output = document.getElementById("off-value")
+          output.innerHTML = slider.value
+
+          slider.oninput = function() {
+            output.innerHTML = this.value
+          }
+        </script>
       </div>
-      <!-- <input type="text" name="offRating" id="off-rating"> -->
 
       <label for="def-rating">Defensive Rating (0-99):</label>
       <div class="slidecontainer">
         <input type="range" name="defRating" min="1" max="99" value="50" class="slider" id="def-rating">
+        <div id="def-value"></div>
+        <script type="text/javascript">
+          let sliderD = document.getElementById("def-rating")
+          let outputD = document.getElementById("def-value")
+          outputD.innerHTML = sliderD.value
+
+          sliderD.oninput = function() {
+            outputD.innerHTML = this.value
+          }
+        </script>
       </div>
-      <!-- <input type="text" name="defRating" id="def-rating"> -->
 
       <button type="submit">Add Player</button>
     </form>
