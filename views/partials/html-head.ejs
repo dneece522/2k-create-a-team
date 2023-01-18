@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/ee0aa88333.js" crossorigin="anonymous"></script>
-    <script src="jscolor.js"></script>
+    <script src="/js/jscolor.min.js"></script>
+    <script>
+      // These options apply to all color pickers on the page
+      jscolor.presets.default = {
+        format:'hex'
+      };
+    </script>
     <link rel="stylesheet" href="/stylesheets/main.css" />
     <title><%= title %></title>
