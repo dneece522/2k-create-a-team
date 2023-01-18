@@ -22,10 +22,16 @@
       <input type="text" name="college" id="college-input">
 
       <label for="off-rating">Offensive Rating (0-99):</label>
-      <input type="text" name="offRating" id="off-rating">
+      <div class="slidecontainer">
+        <input type="range" name="offRating" min="1" max="99" value="50" class="slider" id="off-rating">
+      </div>
+      <!-- <input type="text" name="offRating" id="off-rating"> -->
 
       <label for="def-rating">Defensive Rating (0-99):</label>
-      <input type="text" name="defRating" id="def-rating">
+      <div class="slidecontainer">
+        <input type="range" name="defRating" min="1" max="99" value="50" class="slider" id="def-rating">
+      </div>
+      <!-- <input type="text" name="defRating" id="def-rating"> -->
 
       <button type="submit">Add Player</button>
     </form>
