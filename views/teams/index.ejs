@@ -19,11 +19,15 @@
     </thead>
     <tbody>
       <% teams.forEach(team => { %>
+        <!-- //<% let primaryColor = team.priColor.toLowerCase() %>  -->
         <tr>
           <td><%= team.city %></td>
           <td><%= team.name %></td>
           <td><%= team.conference %></td>
-          <td><%= team.priColor %></td>
+          <td>
+            <!-- <div id="primary-color"></div> -->
+            <%= team.priColor %> 
+          </td>
           <td><%= team.secColor %></td>
           <td><a href="/teams/<%= team._id %>">ROSTER</a></td>
           <td><%= team.owner.name %></td>
@@ -38,6 +42,9 @@
             <% } %> 
           </td>
         </tr>
+        <!-- <script type="text/javascript">
+          document.getElementById('primary-color').style.backgroundColor = primaryColor
+        </script> -->
       <% }) %>
     </tbody>
   </table>
