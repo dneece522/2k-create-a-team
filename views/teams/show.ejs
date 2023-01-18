@@ -61,6 +61,32 @@
         <% }) %>
       </tbody>
     </table>
+    <div id="top-div">
+      <label class="team-ratings" for="off-team-rating">Team Offensive Rating:</label>
+      <% 
+        let offRat = 0 
+        team.roster.forEach(player => { 
+          offRat = parseInt(player.offRating, 10) + offRat
+        })
+        offRat = Math.round(offRat / 5)
+      %>
+      <output id="off-team-rating"><%= offRat %></output>
+    </div>
+    <div>
+      <label class="team-ratings" for="def-team-rating">Team Defensive Rating:</label>
+      <% 
+        let defRat = 0 
+        team.roster.forEach(player => { 
+          defRat = parseInt(player.defRating, 10) + defRat
+        })
+        defRat = Math.round(defRat / 5)
+      %>
+      <output id="def-team-rating"><%= defRat %></output>
+    </div>
+    <div>
+      <label class="team-ratings" for="tot-team-rating">Total Team Rating:</label>
+      <output id="tot-team-rating"><%= Math.round((offRat + defRat) / 2) %></output>
+    </div>
   <% } else if (!team.roster.length && team.owner.equals(user?.profile._id)){ %>
     <h1>Add Your Roster</h1>
     <form id="add-to-roster" action="/teams/<%= team._id %>/players" method="POST">

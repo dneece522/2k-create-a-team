@@ -82,3 +82,23 @@ select:invalid {
 option {
   color: black;
 }
+
+div {
+  display: flex;
+  gap: 20px;
+  padding: 8px;
+  margin: 8px;
+}
+
+.team-ratings {
+  font-size: 24px;
+}
+
+output {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#top-div {
+  margin-top: 25px;
+}
