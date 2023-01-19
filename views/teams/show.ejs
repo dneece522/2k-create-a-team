@@ -23,8 +23,18 @@
         <td><%= team.city %></td>
         <td><%= team.name %></td>
         <td><%= team.conference %></td>
-        <td><%= team.priColor %></td>
-        <td><%= team.secColor %></td>
+        <td id="color-pri">
+          <div
+            style='background-color: <%= team.priColor %>' 
+            id="primary-color"
+          ></div>
+        </td>
+        <td id="color-sec">
+          <div
+            style='background-color: <%= team.secColor %>' 
+            id="secondary-color"
+          ></div>
+        </td>
         <td><%= team.owner.name %></td>
         <% if (team.owner.equals(user?.profile._id) && team.roster.length) { %>
           <td>

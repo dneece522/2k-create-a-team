@@ -20,14 +20,14 @@
       </select>
 
       <label>Primary Color:</label>
-      <input name="priColor" value="<%= team.priColor %>" data-jscolor="{value:'#FF0000'}">
+      <input name="priColor" value="<%= team.priColor %>" data-jscolor="{value:'<%= team.priColor %>'}">
 
       <label>Secondary Color:</label>
-      <input name="secColor" value="<%= team.secColor %>" data-jscolor="{value:'#FF0000'}">
+      <input name="secColor" value="<%= team.secColor %>" data-jscolor="{value:'<%= team.secColor %>'}">
 
       <label>Point Guard:</label>
       <select name="pgId">
-        <option value="" disabled selected hidden>Choose Point Guard</option>
+        <!-- //<option value="<%= team.roster[0].name %>"><%= team.roster[0].name %></option> -->
         <% players.forEach(player => { %> 
           <% if (player.position === 'Point Guard') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -37,7 +37,6 @@
 
       <label>Shooting Guard:</label>
       <select name="sgId">
-        <option value="" disabled selected hidden>Choose Shooting Guard</option>
         <% players.forEach(player => { %> 
           <% if (player.position === 'Shooting Guard') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -47,7 +46,6 @@
 
       <label>Small Forward:</label>
       <select name="sfId">
-        <option value="" disabled selected hidden>Choose Small Forward</option>
         <% players.forEach(player => { %> 
           <% if (player.position === 'Small Forward') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -57,7 +55,6 @@
 
       <label>Power Forward:</label>
       <select name="pfId">
-        <option value="" disabled selected hidden>Choose Power Forward</option>
         <% players.forEach(player => { %> 
           <% if (player.position === 'Power Forward') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -67,7 +64,6 @@
 
       <label>Center:</label>
       <select name="cId">
-        <option value="" disabled selected hidden>Choose Center</option>
         <% players.forEach(player => { %> 
           <% if (player.position === 'Center') { %>
             <option value="<%= player._id %>"><%= player.name %></option>

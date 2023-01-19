@@ -102,3 +102,9 @@ output {
 #top-div {
   margin-top: 25px;
 }
+
+#primary-color, #secondary-color {
+  border: solid 2px;
+  width: auto;
+  height: 30px;
+}
