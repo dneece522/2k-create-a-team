@@ -1,5 +1,6 @@
 table {
   font-size: 20px;
+  background: rgba(50, 50, 50, 0.3) /* Gray background with 30% opacity */
 }
 
 table thead th {
@@ -36,6 +37,7 @@ table td {
 
 #primary-color, #secondary-color {
   border: solid 2px;
+  border-radius: 10px;
   width: auto;
   height: 30px;
 }

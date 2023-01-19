@@ -1,5 +1,6 @@
 table {
   font-size: 20px;
+  background: rgba(50, 50, 50, 0.3) /* Gray background with 30% opacity */
 }
 
 table thead th {
