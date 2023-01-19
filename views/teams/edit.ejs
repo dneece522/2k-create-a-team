@@ -27,7 +27,6 @@
 
       <label>Point Guard:</label>
       <select name="pgId">
-        <!-- //<option value="<%= team.roster[0].name %>"><%= team.roster[0].name %></option> -->
         <% players.forEach(player => { %> 
           <% if (player.position === 'Point Guard') { %>
             <option value="<%= player._id %>"><%= player.name %></option>
@@ -71,7 +70,7 @@
         <% }) %> 
       </select>
 
-      <button type="submit">Update Team</button>
+      <button type="submit"><span>Update Team</span></button>
     </form>
   <% } else { %> 
     <h1>You Must Sign-In to Edit a Team!</h1>

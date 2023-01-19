@@ -42,7 +42,7 @@ body > main {
 }
 
 body > main h1:first-child {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 body > main > h1 {
@@ -141,4 +141,30 @@ button:hover span:after {
 
 .fas::before {
   font-family: "Font Awesome 5 Free";
+}
+
+#instructions {
+  padding: 0 5px;
+  margin-top: 150px;
+}
+
+h3 {
+  font-size: 36px;
+  color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  margin-bottom: 0;
+}
+
+ol {
+  margin-top: 5px;
+  background: rgba(50, 50, 50, 0.2); /* Gray background with 30% opacity */
+  border: solid 2px black;
+}
+
+li {
+  color: black;
+  inline-size: 600px;
+  overflow-wrap: break-word;
+  margin: 5px 0;
 }
