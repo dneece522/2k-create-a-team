@@ -34,7 +34,8 @@ table td {
   background-color: white;
 }
 
-#primary-color {
-  width: 20px;
-  height: 20px;
+div {
+  border: solid 2px;
+  width: 100px;
+  height: 30px;
 }
