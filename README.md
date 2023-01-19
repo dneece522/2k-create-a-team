@@ -1,6 +1,6 @@
 # 2K Create-A-Team
 
-<!-- image goes here -->
+![image of gameplay](./public/assets/gameplay.png)
 
 # [Open the App Here!](https://drewneece-create-a-team.fly.dev/)
 
@@ -19,7 +19,11 @@ This application simulates the popular MyLeague game mode in the NBA 2K video ga
 - EJS
 - git
 
+# Credits 🙌
+- This app uses BasketballCourt-HQ-01.jpg from [Vexels](www.vexels.com)
+- This app uses this Basketball favicon: [freeiconspng](https://www.freeiconspng.com/downloadimg/26241)
+
 # Ice Box 🧊
-- [ ] TBD
+- [ ] Only allow each player in the database to be on one team's roster.
 - [ ] TBD
 - [ ] TBD
