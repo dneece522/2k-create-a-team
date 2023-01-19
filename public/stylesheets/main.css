@@ -42,17 +42,12 @@ body > main h1:first-child {
 
 body > nav {
   grid-area: nav;
-  background-color: #b8c0c2;
+  /* background-color: #b8c0c2; */
+  background-image: linear-gradient(to right, #1d428a, #c8102e);
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 0 20px 0 30px;
-}
-
-nav > #icon {
-  width: 34px;
-  object-fit: contain;
-  margin-right: auto;
 }
 
 nav > a {
@@ -63,16 +58,23 @@ nav > a {
   color: #424748;
 }
 
-nav > a:visited {
-  color: #424748;
+nav > .btn-hover:visited {
+  color: white;
 }
 
-nav > a:hover {
-  color: white;
-  background-color: #424748;
+nav > .btn-hover:hover {
+  color: black;
+  background-color: white;
 }
 
 nav > a.active {
+  color: white;
+}
+
+nav > #icon {
+  width: 34px;
+  object-fit: contain;
+  margin-right: auto;
   color: white;
 }
 
